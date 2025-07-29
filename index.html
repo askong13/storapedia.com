@@ -3,589 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal Kerjasama | Siska Handiska Creative & Jmpartner.id untuk RSIA Indira</title>
+    <title>Proposal Pondasi Digital | RSIA Indira</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        /* === CSS RESET & GLOBAL STYLES === */
+        /* === DESAIN GLOBAL & SKEMA WARNA === */
         :root {
-            --pink: #E94057; /* Warna utama Siska H. Creative */
-            --blue: #4A90E2; /* Warna utama Jmpartner.id */
-            --dark-grey: #333;
-            --light-grey: #f4f7f6;
+            --pink: #E94057;
+            --blue: #4A90E2;
+            --dark: #1a1a2e;
+            --black: #000000;
+            --grey: #6c757d;
+            --light-grey: #f8f9fa;
             --white: #ffffff;
+            --blue-tint: rgba(74, 144, 226, 0.05);
             --gradient: linear-gradient(135deg, var(--pink), var(--blue));
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Offset for fixed navbar */
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-grey);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-            overflow: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); background-color: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 120px 0; overflow: hidden; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.8rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
+        .section-title .subtitle { font-size: 1.1rem; color: var(--grey); max-width: 700px; margin: 15px auto 0; }
+        .btn { display: inline-block; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .btn-gradient { background: var(--gradient); color: var(--white); }
+        .btn-gradient:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .btn-outline { background: transparent; color: var(--pink); border: 2px solid var(--pink); font-size: 0.9rem; padding: 10px 25px; }
+        .btn-outline:hover { background: var(--pink); color: var(--white); transform: translateY(-3px); }
+        .btn i { margin-right: 10px; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.6s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         
-        section:nth-child(even) {
-            background-color: var(--light-grey);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 15px;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 700px;
-            margin: 10px auto 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            background: var(--gradient);
-            color: var(--white);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .btn i { margin-right: 8px; }
-
-        /* Fade-in animation on scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* === NAVBAR === */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        .navbar.scrolled {
-            box-shadow: var(--shadow);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
+        /* === NAVBAR MODERN === */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; z-index: 1000; transition: all 0.3s ease; background: transparent; }
+        .navbar.scrolled { padding: 15px 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-light); }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; text-decoration: none; }
+        .logo span { transition: color 0.3s ease; }
+        .logo:hover .logo-pink { color: var(--blue); }
+        .logo:hover .logo-blue { color: var(--pink); }
         .logo-pink { color: var(--pink); }
         .logo-blue { color: var(--blue); }
+        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; position: relative; padding: 5px 0; font-size: 1rem;}
+        .navbar.top .nav-links a { color: var(--white); text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .navbar.top .logo-pink, .navbar.top .logo-blue { color: var(--white); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gradient); transition: width 0.4s ease; }
+        .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--dark); }
+        .navbar.top .menu-toggle { color: var(--white); }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
+        /* === HERO SECTION (Restored) === */
+        #home { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); background: var(--gradient); position: relative; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1586773860414-72d2427def4c?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; opacity: 0.15; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+        .hero-content .subtitle { font-weight: 400; font-size: 1.2rem; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 700; margin: 10px 0 20px; line-height: 1.2; }
+        .hero-content .client-logo { margin-bottom: 30px; font-weight: 600; font-size: 1.5rem; }
+        .hero-content .client-logo i { margin-right: 10px; color: rgba(255,255,255,0.8); }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-grey);
-            font-weight: 600;
-            position: relative;
-            padding: 5px 0;
-            font-size: 0.95rem;
-        }
+        /* === BAGIAN KEUNGGULAN KEMITRAAN === */
+        .advantages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .advantage-card { background: var(--white); padding: 30px; border-radius: 15px; text-align: center; transition: all 0.3s ease; border: 1px solid #eee; }
+        .advantage-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); border-color: transparent; }
+        .advantage-card .icon { font-size: 2.5rem; margin-bottom: 20px; width: 70px; height: 70px; line-height: 70px; border-radius: 50%; background: var(--gradient); color: var(--white); display: inline-block; }
+        .advantage-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark); }
+        .advantage-card p { font-size: 0.95rem; color: var(--grey); }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
+        /* === BAGIAN SOLUSI (No Tabs) === */
+        #solusi { background-color: var(--light-grey); }
+        .solution-item { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-light); }
+        .solution-item:not(:last-child) { margin-bottom: 50px; }
+        .solution-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .solution-header .icon { font-size: 3rem; }
+        .solution-header .icon.blue { color: var(--blue); }
+        .solution-header .icon.pink { color: var(--pink); }
+        .solution-header h3 { font-size: 2rem; margin-bottom: 0; color: var(--dark); }
         
-        .nav-links a.active::after,
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .sirs-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .sirs-card { background: var(--light-grey); padding: 25px; border-radius: 10px; }
+        .sirs-card h4 { display: flex; align-items: flex-start; gap: 10px; color: var(--blue); margin-bottom: 10px; }
+        .sirs-card h4 i { margin-top: 4px; }
+        .sirs-card.future-proof { background: var(--blue-tint); grid-column: 1 / -1; }
+        .future-list { list-style: none; margin-top: 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+        .future-list li { display: flex; align-items: center; gap: 10px; font-weight: 500; }
         
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--dark-grey);
-        }
+        .medsos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .medsos-benefits li { list-style: none; display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
+        .medsos-benefits i { color: var(--pink); font-size: 1.1rem; width: 20px; margin-top: 4px; }
+        .medsos-summary { text-align: center; }
 
-
-        /* === HERO/BANNER SECTION === */
-        #home {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            background: var(--gradient);
-            position: relative;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: 1;
-        }
+        /* === BAGIAN INVESTASI & TIMELINE === */
+        .investment-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+        .investment-summary { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); text-align: center; }
+        .investment-summary .price-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .investment-summary .price-item .label { font-weight: 500; color: var(--grey); }
+        .investment-summary .price-item .price { font-weight: 600; font-size: 1.2rem; }
+        .total-price { padding-top: 30px; margin-top: 10px; }
+        .total-price .label { font-size: 1.2rem; color: var(--grey); margin-bottom: 10px; }
+        .total-price .price { font-size: 3.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
-        
-        .hero-content .subtitle {
-            font-weight: 400;
-            font-size: 1.2rem;
-        }
+        .timeline-wrapper h3 { font-size: 1.8rem; margin-bottom: 30px; }
+        .timeline-steps { display: flex; gap: 20px; position: relative; }
+        .timeline-steps::before { content: ''; position: absolute; top: 25px; left: 50px; right: 50px; height: 3px; background: #e0e0e0; z-index: 1; }
+        .timeline-step { flex: 1; text-align: center; z-index: 2; }
+        .step-icon { width: 50px; height: 50px; line-height: 50px; border-radius: 50%; background: var(--white); border: 3px solid #e0e0e0; margin: 0 auto 15px; font-size: 1.5rem; color: var(--grey); transition: all 0.3s ease; }
+        .timeline-step:hover .step-icon { border-color: var(--blue); color: var(--blue); transform: scale(1.1); }
+        .timeline-step h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .timeline-step p { font-size: 0.9rem; color: var(--grey); }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin: 10px 0 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-content .client-logo {
-            margin-bottom: 30px;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-        
-        .hero-content .client-logo i {
-            margin-right: 10px;
-            color: rgba(255,255,255,0.8);
-        }
-
-
-        /* === SOLUTION SECTION === */
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .solution-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .solution-card .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .solution-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* Features */
-        .features-container {
-            margin-top: 80px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .feature-block {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .feature-block h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .feature-block.pink h3 { border-bottom: 3px solid var(--pink); color: var(--pink); }
-        .feature-block.blue h3 { border-bottom: 3px solid var(--blue); color: var(--blue); }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .feature-list i {
-            margin-right: 15px;
-            margin-top: 5px;
-            font-size: 1.2rem;
-        }
-        .feature-list .pink i { color: var(--pink); }
-        .feature-list .blue i { color: var(--blue); }
-
-        /* === PARALLEL DEVELOPMENT SECTION === */
-        .parallel-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .parallel-icon {
-            font-size: 8rem;
-            text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .parallel-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        /* === TEAM / PROFILE SECTION === */
-        .team-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: stretch; /* Make cards same height */
-        }
-
-        .profile-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .profile-icon {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 4rem;
-        }
-        .profile-card.pink .profile-icon { background: var(--pink); }
-        .profile-card.blue .profile-icon { background: var(--blue); }
-        
-        .profile-card .brand-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        .profile-card .brand-name.pink { color: var(--pink); }
-        .profile-card .brand-name.blue { color: var(--blue); }
-
-        .profile-card .tagline {
-            font-weight: 600;
-            color: #777;
-            margin-bottom: 20px;
-        }
-        
-        /* === INVESTMENT & TIMELINE SECTION === */
-        .investment-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            align-items: flex-start;
-        }
-
-        .investment-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .investment-card h3 {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .investment-card .price {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .scope-list {
-            list-style: none;
-            text-align: left;
-        }
-        
-        .scope-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .scope-list i {
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        .scope-list .fa-check-circle { color: #2ecc71; }
-        .scope-list .fa-times-circle { color: #e74c3c; }
-
-        .timeline-container {
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--light-grey);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -38px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 4px solid var(--blue);
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-item:hover::before {
-             background: var(--pink);
-             border-color: var(--pink);
-        }
-
-        .timeline-content h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .timeline-content .phase {
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        /* === BAGIAN TIM KAMI === */
+        #tim { background-color: var(--light-grey); }
+        .team-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .profile-card { padding: 30px; border-radius: 20px; display: flex; align-items: center; gap: 30px; transition: all 0.3s ease; }
+        .profile-card.blue { background: var(--blue-tint); }
+        .profile-card.pink { background: var(--black); color: var(--white); }
+        .profile-card:hover { transform: scale(1.03); box-shadow: var(--shadow); }
+        .profile-card .profile-img-wrapper { flex-shrink: 0; }
+        .profile-img { width: 90px; height: 90px; object-fit: cover; border-radius: 10px; }
+        .profile-icon { font-size: 2.5rem; width: 90px; height: 90px; line-height: 90px; text-align: center; border-radius: 50%; flex-shrink: 0; background: var(--blue); color: var(--white); }
+        .profile-info .brand-name { font-size: 1.5rem; font-weight: 700; }
+        .profile-card.pink .brand-name { color: var(--pink); }
+        .profile-info .tagline { font-weight: 600; color: var(--grey); margin-bottom: 10px; }
+        .profile-card.pink .tagline { color: #aaa; }
+        .profile-card.pink p { color: #ccc; }
 
         /* === FOOTER === */
-        footer {
-            background: var(--dark-grey);
-            color: var(--light-grey);
-            padding: 60px 0;
-            text-align: center;
-        }
+        footer { background: var(--dark); color: #aab2c0; padding: 80px 0; text-align: center; }
+        .footer-content h3 { font-size: 2.2rem; color: var(--white); margin-bottom: 20px; }
+        .footer-content p { max-width: 600px; margin: 0 auto 30px; }
+        .footer-copyright { border-top: 1px solid #343a40; padding-top: 30px; margin-top: 30px; font-size: 0.9rem; }
+        
+        /* === POPUP MODAL === */
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 26, 46, 0.7); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        .popup-overlay.active { opacity: 1; visibility: visible; }
+        .popup-content { background: var(--white); padding: 40px; border-radius: 20px; width: 90%; max-width: 600px; position: relative; box-shadow: 0 10px 50px rgba(0,0,0,0.2); transform: scale(0.9); transition: transform 0.3s; }
+        .popup-overlay.active .popup-content { transform: scale(1); }
+        .close-popup { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--grey); background: none; border: none; cursor: pointer; }
+        .popup-content h3 { text-align: center; margin-bottom: 30px; font-size: 1.8rem; }
+        .package-item { padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .package-item.fixed { background: var(--blue-tint); }
+        .package-item.selectable { background: var(--pink-tint); }
+        .package-item .label h4 { margin: 0; font-size: 1.1rem; }
+        .package-item .label p { margin: 0; font-size: 0.9rem; color: var(--grey); }
+        .package-item .price, .package-item .actions { text-align: right; }
+        .package-item .price span { font-weight: 700; font-size: 1.2rem; }
+        .package-item .actions select { padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; font-family: 'Inter', sans-serif; font-weight: 500; }
+        .popup-summary { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
+        .summary-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .summary-row .label { font-size: 1.2rem; font-weight: 600; }
+        .summary-row .value { font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .popup-content .btn { width: 100%; margin-top: 20px; }
+        .ads-option { margin-top: 20px; text-align: center; }
+        .ads-option label { font-weight: 500; color: var(--grey); cursor: pointer; }
+        .ads-option input { margin-right: 8px; accent-color: var(--pink); }
 
-        .footer-content h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .footer-content p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        .footer-copyright {
-            border-top: 1px solid #444;
-            padding-top: 30px;
-            margin-top: 30px;
-            font-size: 0.9rem;
-        }
 
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 992px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .features-container, .team-container, .investment-container, .parallel-container {
-                grid-template-columns: 1fr;
-            }
-            .parallel-icon {
-                font-size: 6rem;
-                margin-bottom: 30px;
-            }
+            .advantages-grid, .team-container, .investment-wrapper { grid-template-columns: 1fr; }
+            .investment-wrapper { gap: 50px; }
+            .profile-card { flex-direction: column; text-align: center; gap: 15px; }
         }
-
         @media (max-width: 768px) {
             html { scroll-padding-top: 70px; }
-            .navbar { padding: 10px 0; }
+            .navbar { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-light); padding: 15px 0; }
+            .navbar.top .nav-links a { color: var(--dark); text-shadow: none; }
+            .navbar.top .logo-pink { color: var(--pink); } /* Restore color on mobile */
+            .navbar.top .logo-blue { color: var(--blue); }
+            .navbar.top .menu-toggle { color: var(--dark); }
             .menu-toggle { display: block; }
-            .nav-links {
-                position: absolute;
-                top: 70px; /* Navbar height */
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease-in-out;
-            }
-            .nav-links.active {
-                max-height: 500px; /* Arbitrary large value */
-                padding: 20px 0;
-                box-shadow: var(--shadow);
-            }
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-            .nav-links a {
-                display: block;
-                padding: 15px 0;
-            }
-
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); flex-direction: column; align-items: center; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+            .nav-links.active { max-height: 500px; padding-bottom: 20px; box-shadow: var(--shadow); }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { display: block; padding: 15px 0; }
             section { padding: 80px 0; }
-            .section-title h2 { font-size: 2rem; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content .subtitle { font-size: 1rem; }
+            .section-title h2 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .medsos-grid { grid-template-columns: 1fr; }
+            .timeline-steps { flex-direction: column; }
+            .timeline-steps::before { display: none; }
         }
-        
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#home" class="logo">
                 <span class="logo-pink">Siska H.</span> & <span class="logo-blue">Jmpartner</span>
             </a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#keunggulan">Keunggulan</a></li>
                 <li><a href="#solusi">Solusi</a></li>
-                <li><a href="#paralel">Masa Depan</a></li>
-                <li><a href="#tim">Profil Tim</a></li>
                 <li><a href="#investasi">Investasi</a></li>
-                <li><a href="#kontak" class="btn"><i class="fab fa-whatsapp"></i> Janji Temu</a></li>
+                <li><a href="#tim">Tim Kami</a></li>
+                <li><a href="#" class="btn btn-gradient open-popup-btn"><i class="fas fa-calendar-check"></i> Buat Janji Temu</a></li>
             </ul>
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -597,146 +220,189 @@
         <section id="home">
             <div class="hero-bg"></div>
             <div class="hero-content reveal">
-                <p class="subtitle">Proposal Kerjasama Strategis</p>
-                <h1>Pengembangan Sistem Informasi Rumah Sakit Terintegrasi</h1>
-                <p class="client-logo"><i class="fa-solid fa-hospital"></i>Untuk RSIA Indira</p>
-                <a href="#solusi" class="btn">Lihat Detail Solusi</a>
+                <p class="subtitle">Proposal Kemitraan Strategis</p>
+                <h1>Membangun Pondasi Digital RSIA Indira</h1>
+                <p class="client-logo"><i class="fa-solid fa-hospital"></i>Efisiensi Hari Ini, Inovasi Tanpa Batas untuk Masa Depan</p>
+                <a href="#solusi" class="btn btn-gradient">Lihat Paket Pondasi</a>
             </div>
         </section>
 
-        <section id="solusi">
+        <section id="keunggulan">
             <div class="container">
                 <div class="section-title reveal">
-                    <h2>Solusi yang Ditawarkan: SIRS Terintegrasi</h2>
-                    <p>Fondasi digital yang kuat, dirancang untuk efisiensi saat ini dan pertumbuhan di masa depan. Kami membangun sistem yang fleksibel dan skalabel.</p>
+                    <h2 style="font-size: 2.5rem;">Mengapa Ini Lebih dari Sekadar Penawaran?</h2>
+                    <p class="subtitle">Ini adalah undangan untuk membangun kemitraan jangka panjang. Kolaborasi kami memberikan keuntungan strategis yang tidak bisa Anda dapatkan dari layanan terpisah.</p>
+                </div>
+                <div class="advantages-grid">
+                    <div class="advantage-card reveal">
+                        <div class="icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Pondasi Kokoh</h3>
+                        <p>Kami tidak hanya membuat aplikasi, kami membangun fondasi ekosistem digital yang siap untuk semua kebutuhan masa depan Anda.</p>
+                    </div>
+                    <div class="advantage-card reveal" style="transition-delay: 0.1s;">
+                        <div class="icon"><i class="fas fa-handshake-angle"></i></div>
+                        <h3>Sinergi Total</h3>
+                        <p>Desain sistem internal akan selaras dengan citra merek di media sosial, menciptakan identitas yang kuat dan kohesif.</p>
+                    </div>
+                    <div class="advantage-card reveal" style="transition-delay: 0.2s;">
+                        <div class="icon"><i class="fas fa-comments"></i></div>
+                        <h3>Satu Titik Kontak</h3>
+                        <p>Komunikasi menjadi lebih sederhana dan efisien. Cukup berkoordinasi dengan satu tim untuk semua kebutuhan digital Anda.</p>
+                    </div>
+                    <div class="advantage-card reveal" style="transition-delay: 0.3s;">
+                        <div class="icon"><i class="fas fa-check-double"></i></div>
+                        <h3>Konsistensi Merek</h3>
+                        <p>Kami menjamin pesan dan visual RSIA Indira konsisten di semua platform, baik untuk staf maupun untuk pasien.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solusi" style="background-color: var(--light-grey);">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Dua Pilar Krusial Pondasi Digital Anda</h2>
+                    <p class="subtitle">Kami fokus pada dua area vital yang bekerja serentak: memperkuat sistem internal yang kokoh dan membangun citra eksternal yang kuat.</p>
+                </div>
+
+                <div class="solution-item reveal">
+                    <div class="solution-header">
+                        <div class="icon blue"><i class="fas fa-cogs"></i></div>
+                        <div>
+                            <h3>Pilar #1: Ekosistem Operasional Internal</h3>
+                            <p>Ditangani oleh <strong>Jmpartner.id</strong> untuk efisiensi, keamanan, dan skalabilitas.</p>
+                        </div>
+                    </div>
+                    <div class="sirs-features">
+                        <div class="sirs-card">
+                            <h4><i class="fas fa-user-edit"></i>Reservasi Pasien & Jadwal</h4>
+                            <p>Manajemen data pasien, jadwal dokter, dan proses reservasi janji temu yang terpusat dan mudah.</p>
+                        </div>
+                        <div class="sirs-card">
+                            <h4><i class="fas fa-bed"></i>Manajemen Kamar Inap</h4>
+                            <p>Visualisasi ketersediaan kamar secara real-time, pemesanan, dan alokasi otomatis untuk mempercepat layanan.</p>
+                        </div>
+                         <div class="sirs-card future-proof">
+                            <h4><i class="fas fa-sitemap"></i>Pondasi untuk Inovasi Masa Depan</h4>
+                            <p>Ini bukan sekadar aplikasi, ini adalah investasi. Arsitektur sistem kami sengaja dirancang sebagai fondasi utama yang siap diintegrasikan dengan modul lanjutan di masa depan, seperti:</p>
+                            <ul class="future-list">
+                                <li><i class="fas fa-pills"></i>Sistem Farmasi & Pemesanan Obat</li>
+                                <li><i class="fas fa-stethoscope"></i>Konsultasi Online (Telemedicine)</li>
+                                <li><i class="fas fa-vial"></i>Integrasi Hasil Laboratorium</li>
+                                <li><i class="fas fa-file-invoice-dollar"></i>Sistem Penagihan Terpadu</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="solution-grid">
-                    <div class="solution-card reveal" style="transition-delay: 0.1s;">
-                        <div class="icon"><i class="fas fa-puzzle-piece"></i></div>
-                        <h3>Modular</h3>
-                        <p>Implementasi fitur secara bertahap sesuai prioritas dan anggaran. Mulai dari yang esensial, kembangkan kemudian.</p>
+                <div class="solution-item reveal">
+                    <div class="solution-header">
+                        <div class="icon pink"><i class="fas fa-bullhorn"></i></div>
+                         <div>
+                            <h3>Pilar #2: Citra & Jangkauan Digital</h3>
+                            <p>Ditangani oleh <strong>Siska Handiska Creative</strong> untuk membangun kepercayaan dan menjangkau pasien.</p>
+                        </div>
                     </div>
-                    <div class="solution-card reveal" style="transition-delay: 0.2s;">
-                        <div class="icon"><i class="fas fa-layer-group"></i></div>
-                        <h3>Skalabel</h3>
-                        <p>Sistem dirancang untuk menangani pertumbuhan data dan pengguna tanpa perlu perombakan besar di masa mendatang.</p>
-                    </div>
-                    <div class="solution-card reveal" style="transition-delay: 0.3s;">
-                        <div class="icon"><i class="fas fa-cogs"></i></div>
-                        <h3>Fleksibel & Terintegrasi</h3>
-                        <p>Arsitektur berbasis API memungkinkan integrasi mulus dengan modul lain atau sistem eksternal di kemudian hari.</p>
-                    </div>
-                </div>
-
-                <div class="features-container">
-                    <div class="feature-block pink reveal">
-                        <h3><i class="fas fa-user-edit"></i>Modul Registrasi & Reservasi</h3>
-                        <ul class="feature-list pink">
-                            <li><i class="fas fa-check-circle"></i>Manajemen Data Pasien Baru & Lama</li>
-                            <li><i class="fas fa-check-circle"></i>Pencarian Pasien (Nama, NIK, No. RM)</li>
-                            <li><i class="fas fa-check-circle"></i>Reservasi Janji Temu dengan Dokter/Poli</li>
-                            <li><i class="fas fa-check-circle"></i>Manajemen Jadwal Praktik Dokter</li>
-                        </ul>
-                    </div>
-                    <div class="feature-block blue reveal">
-                        <h3><i class="fas fa-bed"></i>Modul Pemesanan Kamar</h3>
-                         <ul class="feature-list blue">
-                            <li><i class="fas fa-check-circle"></i>Manajemen Data Kamar (Tipe, Fasilitas)</li>
-                            <li><i class="fas fa-check-circle"></i>Visualisasi Ketersediaan Kamar Real-time</li>
-                            <li><i class="fas fa-check-circle"></i>Sistem Pemesanan & Alokasi Kamar Inap</li>
-                            <li><i class="fas fa-check-circle"></i>Laporan Dasar Tingkat Hunian Kamar</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="paralel">
-            <div class="container">
-                 <div class="section-title reveal">
-                    <h2>Pengembangan Paralel & Siap Masa Depan</h2>
-                    <p>Kami tidak hanya membangun fitur, tapi sebuah ekosistem. Pendekatan kami memastikan sistem Anda siap untuk tumbuh bersama RSIA Indira.</p>
-                </div>
-                <div class="parallel-container">
-                    <div class="parallel-icon reveal">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <div class="parallel-text reveal" style="transition-delay: 0.2s;">
-                        <h3>Arsitektur yang Disiapkan untuk Fitur Lanjutan</h3>
-                        <p>Sistem ini dibangun dengan pendekatan paralel. Artinya, saat kami mengembangkan modul inti (Pemesanan Kamar & Reservasi), kami secara bersamaan membangun fondasi arsitektur yang kokoh. </p>
-                        <br>
-                        <p>Struktur basis data, sistem otentikasi, dan rancangan API telah kami siapkan untuk dapat mengakomodasi pengembangan fitur-fitur lanjutan di masa depan secara mulus, seperti:</p>
-                        <ul class="feature-list" style="margin-top: 15px;">
-                            <li class="blue"><i class="fas fa-file-medical"></i>E-Rekam Medis (EMR)</li>
-                            <li class="blue"><i class="fas fa-pills"></i>Modul Farmasi & Apotek</li>
-                            <li class="blue"><i class="fas fa-user-md"></i>Konsultasi Online (Telemedicine)</li>
-                        </ul>
-                        <p style="margin-top: 10px;">Pendekatan ini akan menghemat waktu dan biaya secara signifikan saat RSIA Indira memutuskan untuk melakukan ekspansi fitur di fase berikutnya.</p>
+                    <div class="medsos-grid">
+                        <div>
+                            <h4>Layanan Bulanan Mencakup:</h4>
+                            <ul class="medsos-benefits" style="margin-top: 15px;">
+                                <li><i class="fas fa-check"></i>Perencanaan Konten Bulanan</li>
+                                <li><i class="fas fa-check"></i>4 Video Reels per Minggu</li>
+                                <li><i class="fas fa-check"></i>3 Desain Visual Grafis</li>
+                                <li><i class="fas fa-check"></i>Manajemen Story Interaktif</li>
+                                <li><i class="fas fa-check"></i>Strategi, Ide, hingga Copywriting</li>
+                                <li><i class="fas fa-check"></i>Termasuk Voice Over & Aset Digital</li>
+                            </ul>
+                        </div>
+                        <div class="medsos-summary">
+                            <h4>Fokus Pada Komunikasi</h4>
+                            <p>Kami merancang setiap konten untuk memberikan edukasi, membangun kepercayaan, dan mengkomunikasikan keunggulan layanan RSIA Indira kepada masyarakat luas.</p>
+                            <a href="https://drive.google.com/file/d/1i7fzBFnwPUy6Y2KMnwTlvzQPA69bgy0s/view?usp=drivesdk" target="_blank" class="btn btn-outline" style="margin-top: 20px;">
+                                <i class="fas fa-file-pdf"></i> Download Penawaran PDF
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tim">
-            <div class="container">
-                <div class="section-title reveal">
-                    <h2>Profil Kemitraan Strategis</h2>
-                    <p>Sinergi antara keahlian desain kreatif dan rekayasa perangkat lunak untuk hasil yang maksimal.</p>
-                </div>
-                <div class="team-container">
-                    <div class="profile-card pink reveal" style="transition-delay: 0.1s;">
-                        <div class="profile-icon"><i class="fas fa-palette"></i></div>
-                        <h3 class="brand-name pink">Siska Handiska Creative</h3>
-                        <p class="tagline">Human-Centered Design & UX</p>
-                        <p>Berfokus pada perancangan antarmuka (UI) yang fungsional dan indah, serta pengalaman pengguna (UX) yang memastikan sistem mudah dipelajari dan efisien untuk alur kerja sehari-hari.</p>
-                    </div>
-                    <div class="profile-card blue reveal" style="transition-delay: 0.2s;">
-                        <div class="profile-icon"><i class="fas fa-code"></i></div>
-                        <h3 class="brand-name blue">Jmpartner.id</h3>
-                        <p class="tagline">Software Engineering & System Architecture</p>
-                        <p>Pilar kekuatan teknis dengan keahlian mendalam dalam rekayasa perangkat lunak dan arsitektur sistem, memastikan produk yang dibangun andal, aman, dan siap untuk pengembangan skala besar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <section id="investasi">
             <div class="container">
                 <div class="section-title reveal">
-                    <h2>Investasi & Linimasa Proyek</h2>
-                    <p>Transparansi biaya dan perencanaan waktu yang jelas untuk kesuksesan implementasi proyek fase awal.</p>
+                    <h2>Investasi & Linimasa yang Jelas</h2>
+                    <p class="subtitle">Kami percaya pada transparansi. Berikut adalah rincian investasi untuk membangun pondasi digital Anda dan rencana eksekusi yang efisien.</p>
                 </div>
-                <div class="investment-container">
-                    <div class="investment-card reveal">
-                        <h3>Total Investasi Fase Awal</h3>
-                        <p class="price">Rp 25 Juta</p>
-                        <ul class="scope-list">
-                            <li class="title"><strong>Cakupan Biaya:</strong></li>
-                            <li><i class="fas fa-check-circle"></i>Analisis & Desain Sistem</li>
-                            <li><i class="fas fa-check-circle"></i>Pengembangan 2 Modul Inti</li>
-                            <li><i class="fas fa-check-circle"></i>Pengujian & Implementasi</li>
-                            <li><i class="fas fa-check-circle"></i>Pelatihan & Dokumentasi</li>
-                            <li class="title" style="margin-top:15px;"><strong>Di Luar Cakupan:</strong></li>
-                            <li><i class="fas fa-times-circle"></i>Biaya Hosting & Server</li>
-                            <li><i class="fas fa-times-circle"></i>Biaya Pemeliharaan Lanjutan</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-container reveal" style="transition-delay: 0.2s;">
-                        <h3>Linimasa Proyek Cepat: 2 Minggu</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <span class="phase">Minggu 1</span>
-                                <h4>Analisis, Desain & Pengembangan Inti</h4>
-                                <p>Kick-off, analisis cepat (rapid analysis), desain UI/UX prioritas, dan pengembangan paralel (backend & frontend) untuk modul inti.</p>
-                            </div>
+                <div class="investment-wrapper">
+                    <div class="investment-summary reveal">
+                        <div class="price-item">
+                            <div class="label">Pembangunan Pondasi SIRS</div>
+                            <div class="price counter" data-target="25000000">0</div>
                         </div>
-                         <div class="timeline-item">
-                            <div class="timeline-content">
-                                <span class="phase">Minggu 2</span>
-                                <h4>Pengujian, Implementasi & Pelatihan</h4>
-                                <p>Pengujian fungsional menyeluruh, implementasi awal (deployment), sesi pelatihan staf, dan serah terima sistem.</p>
-                            </div>
+                        <div class="price-item">
+                            <div class="label">Manajemen Citra Digital (Bulan ke-1)</div>
+                            <div class="price counter" data-target="4700000">0</div>
+                        </div>
+                        <div class="total-price">
+                            <p class="label">Total Investasi Awal</p>
+                            <div class="price counter" data-target="29700000">0</div>
+                        </div>
+                        <p style="text-align:center; margin-top: 20px; font-size: 0.9rem; color: var(--grey);">Pembayaran dapat dilakukan dalam 2 termin. Opsi Iklan berbayar (Meta Ads) tersedia dengan biaya tambahan.</p>
+                    </div>
+                    <div class="timeline-wrapper reveal" style="transition-delay: 0.2s;">
+                         <h3>Linimasa Proyek Cepat (2 Minggu)</h3>
+                         <p style="margin-bottom: 30px;">Fokus kami adalah memberikan hasil nyata dalam waktu singkat. Berikut adalah alur kerja pengembangan sistem informasi:</p>
+                         <div class="timeline-steps">
+                             <div class="timeline-step">
+                                 <div class="step-icon"><i class="fas fa-search"></i></div>
+                                 <h4>Hari 1-3</h4>
+                                 <p>Analisis & Desain</p>
+                             </div>
+                              <div class="timeline-step">
+                                 <div class="step-icon"><i class="fas fa-code"></i></div>
+                                 <h4>Hari 4-10</h4>
+                                 <p>Pengembangan Inti</p>
+                             </div>
+                              <div class="timeline-step">
+                                 <div class="step-icon"><i class="fas fa-check"></i></div>
+                                 <h4>Hari 11-12</h4>
+                                 <p>Pengujian</p>
+                             </div>
+                              <div class="timeline-step">
+                                 <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                                 <h4>Hari 13-14</h4>
+                                 <p>Implementasi & Pelatihan</p>
+                             </div>
+                         </div>
+                         <p style="text-align: center; margin-top: 30px; font-weight: 500;">Layanan media sosial akan dimulai secara paralel pada minggu pertama.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tim" style="background-color: var(--light-grey);">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Tim Kolaboratif Anda</h2>
+                    <p class="subtitle">Kombinasi keahlian yang saling melengkapi untuk memastikan setiap aspek proyek ditangani oleh ahlinya.</p>
+                </div>
+                <div class="team-container">
+                    <div class="profile-card blue reveal">
+                        <div class="profile-icon"><i class="fas fa-server"></i></div>
+                        <div class="profile-info">
+                            <h3 class="brand-name">Jmpartner.id</h3>
+                            <p class="tagline">Arsitek Pondasi Digital</p>
+                            <p>Kami membangun mesin operasional yang tidak hanya efisien hari ini, tapi juga kokoh untuk menopang seluruh inovasi RSIA Indira di masa depan.</p>
+                        </div>
+                    </div>
+                    <div class="profile-card pink reveal" style="transition-delay: 0.2s;">
+                        <div class="profile-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1Ouloa4dWqVtrhONgzIu4hiELA4gtHMJ-" alt="Logo Siska Handiska Creative" class="profile-img">
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="brand-name">Siska Handiska Creative</h3>
+                            <p class="tagline">Mitra Komunikasi & Visual</p>
+                            <p>Kami memastikan pondasi yang dibangun memiliki antarmuka yang ramah pengguna dan diceritakan dengan baik kepada dunia luar melalui media sosial.</p>
                         </div>
                     </div>
                 </div>
@@ -747,85 +413,204 @@
     <footer id="kontak">
         <div class="container reveal">
             <div class="footer-content">
-                <h3>Siap Memulai Transformasi Digital RSIA Indira?</h3>
-                <p>Kami sangat antusias untuk berdiskusi lebih lanjut. Mari jadwalkan pertemuan untuk membahas bagaimana kami dapat membantu mewujudkan visi Anda dalam waktu singkat.</p>
-                <a href="https://wa.me/6281274564564" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Buat Janji Temu Sekarang</a>
+                <h3>Mari Bangun Pondasi Masa Depan RSIA Indira Bersama</h3>
+                <p>Kami siap menjadi mitra strategis Anda. Hubungi kami untuk diskusi lebih lanjut dan memulai langkah pertama menuju rumah sakit yang lebih modern, efisien, dan terhubung dengan komunitasnya.</p>
+                <button class="btn btn-gradient open-popup-btn"><i class="fas fa-calendar-check"></i> Buat Janji Temu Sekarang</button>
             </div>
             <div class="footer-copyright">
-                &copy; 2025 Kemitraan Strategis Siska Handiska Creative & Jmpartner.id. All Rights Reserved.
+                © 2025 Kemitraan Strategis Siska Handiska Creative & Jmpartner.id. Seluruh Hak Cipta.
             </div>
         </div>
     </footer>
+    
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <button class="close-popup" id="close-popup">×</button>
+            <h3>Konfirmasi Paket Kerjasama</h3>
+            
+            <div class="package-item fixed">
+                <div class="label">
+                    <h4>Pembangunan Pondasi SIRS</h4>
+                    <p>Fase Awal (Paket Tetap)</p>
+                </div>
+                <div class="price">
+                    <span id="sirs-price"></span>
+                </div>
+            </div>
+            
+            <div class="package-item selectable">
+                 <div class="label">
+                    <h4>Manajemen Citra Digital</h4>
+                    <p>Pilih durasi kontrak</p>
+                </div>
+                <div class="actions">
+                    <select id="duration-select">
+                        <option value="3">3 Bulan</option>
+                        <option value="6">6 Bulan</option>
+                        <option value="12">1 Tahun</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ads-option">
+                <input type="checkbox" id="ads-checkbox" onchange="updatePopupDetails()">
+                <label for="ads-checkbox">Sertakan diskusi untuk Iklan (Meta & Google Ads)</label>
+            </div>
+
+            <div class="popup-summary">
+                 <div class="summary-row">
+                    <span class="label">Grand Total</span>
+                    <span class="value" id="grand-total"></span>
+                </div>
+            </div>
+
+            <a href="#" id="whatsapp-btn" target="_blank" class="btn btn-gradient">
+                <i class="fab fa-whatsapp"></i> Konfirmasi via WhatsApp
+            </a>
+        </div>
+    </div>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const SIRS_PRICE = 25000000;
+            const MEDSOS_PRICE_PER_MONTH = 4700000;
+            const PHONE_NUMBER = "6281274564564";
 
-            // --- NAVBAR STYLING ON SCROLL ---
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // --- MOBILE MENU TOGGLE ---
+            const navbar = document.getElementById('navbar');
             const menuToggle = document.getElementById('menu-toggle');
             const navLinks = document.getElementById('nav-links');
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Close mobile menu when a link is clicked
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                     if (navLinks.classList.contains('active')) {
-                         navLinks.classList.remove('active');
-                     }
-                });
-            });
-
-
-            // --- ACTIVE NAV LINK ON SCROLL ---
-            const sections = document.querySelectorAll('main section');
+            const sections = document.querySelectorAll('main section, footer');
             const navLi = document.querySelectorAll('.nav-links a');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 90) { // 90px offset
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLi.forEach(a => {
-                    a.classList.remove('active');
-                    if (!a.href.includes("#kontak") && a.getAttribute('href').endsWith('#' + current)) {
-                        a.classList.add('active');
-                    }
-                });
-            });
-
-            // --- FADE-IN ANIMATION ON SCROLL ---
             const revealElements = document.querySelectorAll('.reveal');
             
+            const popupOverlay = document.getElementById('popup-overlay');
+            const openPopupBtns = document.querySelectorAll('.open-popup-btn');
+            const closePopupBtn = document.getElementById('close-popup');
+            const sirsPriceEl = document.getElementById('sirs-price');
+            const durationSelectEl = document.getElementById('duration-select');
+            const grandTotalEl = document.getElementById('grand-total');
+            const whatsappBtnEl = document.getElementById('whatsapp-btn');
+            const adsCheckbox = document.getElementById('ads-checkbox');
+            
+            const formatCurrency = (number) => `Rp ${number.toLocaleString('id-ID')}`;
+
+            window.updatePopupDetails = () => {
+                const selectedDuration = parseInt(durationSelectEl.value);
+                const medsosTotal = selectedDuration * MEDSOS_PRICE_PER_MONTH;
+                const grandTotal = SIRS_PRICE + medsosTotal;
+
+                sirsPriceEl.innerText = formatCurrency(SIRS_PRICE);
+                grandTotalEl.innerText = formatCurrency(grandTotal);
+
+                const durationText = selectedDuration === 12 ? '1 Tahun' : `${selectedDuration} Bulan`;
+                let adsText = "";
+                if (adsCheckbox.checked) {
+                    adsText = `\nKami juga tertarik untuk mendiskusikan opsi iklan berbayar (Meta & Google Ads).`;
+                }
+
+                const message = `Halo, Siska Handiska & Jmpartner.id,
+
+Kami dari Manajemen RSIA Indira, setelah mereview proposal Anda, tertarik untuk melanjutkan diskusi kerjasama dengan rincian paket sebagai berikut:
+
+1. Pembangunan Pondasi Sistem Informasi Terintegrasi:
+   - Harga: ${formatCurrency(SIRS_PRICE)}
+
+2. Manajemen Citra Digital Profesional:
+   - Pilihan Paket: ${durationText}
+   - Harga: ${formatCurrency(medsosTotal)}
+
+Total Paket Kerjasama: ${formatCurrency(grandTotal)}${adsText}
+
+Mohon informasikan ketersediaan waktu Anda untuk pertemuan selanjutnya.
+
+Terima kasih.
+Manajemen RSIA Indira`;
+
+                whatsappBtnEl.href = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            };
+            
+            const openPopup = (e) => {
+                e.preventDefault();
+                updatePopupDetails();
+                popupOverlay.classList.add('active');
+            };
+
+            const closePopup = () => popupOverlay.classList.remove('active');
+            
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    navbar.classList.remove('top');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navbar.classList.add('top');
+                }
+                updateActiveNavLink();
+            };
+
+            const updateActiveNavLink = () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (pageYOffset >= section.offsetTop - 150) current = section.id;
+                });
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') == '#' + current) a.classList.add('active');
+                });
+            };
+            
+            const toggleMobileMenu = () => navLinks.classList.toggle('active');
+
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        if (entry.target.classList.contains('investment-summary')) startCounters();
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15 });
+            
+            const counters = document.querySelectorAll('.counter');
+            let countersStarted = false;
+            const startCounters = () => {
+                if (countersStarted) return;
+                countersStarted = true;
+                counters.forEach(counter => {
+                    const target = +counter.dataset.target;
+                    let current = 0;
+                    const increment = target / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            clearInterval(timer);
+                            counter.innerText = formatCurrency(target);
+                        } else {
+                            counter.innerText = formatCurrency(Math.ceil(current));
+                        }
+                    }, 20);
+                });
+            };
 
-            revealElements.forEach(elem => {
-                revealObserver.observe(elem);
+            window.addEventListener('scroll', handleScroll);
+            menuToggle.addEventListener('click', toggleMobileMenu);
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+                });
             });
+            revealElements.forEach(elem => revealObserver.observe(elem));
+            
+            openPopupBtns.forEach(btn => btn.addEventListener('click', openPopup));
+            closePopupBtn.addEventListener('click', closePopup);
+            popupOverlay.addEventListener('click', (e) => {
+                if (e.target === popupOverlay) closePopup();
+            });
+            durationSelectEl.addEventListener('change', updatePopupDetails);
 
+            handleScroll();
         });
     </script>
-</body>
-</html>
+ </body>
+ </html>
