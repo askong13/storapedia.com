@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storapedia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white">
+
+<header id="header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <a href="#" class="text-3xl font-extrabold text-[var(--primary-blue)] tracking-tighter nav-link" data-target="home">STORAPEDIA</a>
+        <div class="hidden lg:flex items-center space-x-8">
+            <a href="#locations" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="locations">Locations</a>
+            <a href="#how-it-works" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="how-it-works">How It Works</a>
+            <a href="#faq" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="faq">FAQ</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div id="notification-area" class="relative hidden">
+                <button id="notification-button" class="text-gray-600 hover:text-[var(--primary-blue)] text-2xl relative">
+                    <i class="fas fa-bell"></i>
+                    <span id="notification-count" class="notification-badge">0</span>
+                </button>
+            </div>
+            <div id="auth-links" class="md:flex items-center space-x-4">
+                <button id="login-btn" class="text-gray-600 font-semibold hover:text-[var(--primary-blue)] px-4 py-2">Login</button>
+                <button id="signup-btn" class="btn-primary font-semibold px-5 py-2 rounded-lg">Sign Up</button>
+            </div>
+            <div id="user-menu" class="hidden relative">
+                <button id="user-menu-button" class="flex items-center space-x-2">
+                    <span id="user-greeting" class="font-semibold text-gray-700 hidden sm:block"></span>
+                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-gray-500"></i>
+                    </div>
+                </button>
+                <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-50 py-1 border border-gray-100">
+                    <a href="#" id="dashboard-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i class="fas fa-tachometer-alt fa-fw mr-2"></i>Dashboard</a>
+                    <a href="#" id="logout-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i class="fas fa-sign-out-alt fa-fw mr-2"></i>Logout</a>
+                </div>
+            </div>
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-[var(--primary-blue)] text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <a href="#locations" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="locations">Locations</a>
+        <a href="#how-it-works" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="how-it-works">How It Works</a>
+        <a href="#faq" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="faq">FAQ</a>
+        <div id="mobile-auth-links" class="border-t border-gray-200 p-4 space-y-3">
+            <button id="mobile-login-btn" class="w-full text-center text-gray-600 font-semibold hover:text-[var(--primary-blue)] px-4 py-2 rounded-lg border border-gray-300">Login</button>
+            <button id="mobile-signup-btn" class="w-full btn-primary font-semibold px-5 py-2 rounded-lg">Sign Up</button>
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div id="main-content" class="section active">
+            <section id="home" class="relative overflow-hidden bg-[var(--light-bg)]">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40 text-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-[var(--dark-text)] leading-tight tracking-tighter">Secure, Simple, Smart Storage.</h1>
+                    <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Find affordable and accessible self-storage units near you. Book online in minutes.</p>
+                    <div class="mt-10">
+                        <a href="#locations" class="btn-primary font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 nav-link" data-target="locations">Find Storage Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="py-20">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-16">How It Works in 3 Easy Steps</h2>
+                    <div class="grid md:grid-cols-3 gap-10 text-center relative">
+                            <div class="hidden md:block absolute top-1/2 left-0 w-full h-px">
+                                <svg width="100%" height="2"><line x1="0" y1="1" x2="100%" y2="1" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8 8"/></svg>
+                            </div>
+                            <div class="flex flex-col items-center z-10">
+                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">1. Find & Compare</h3>
+                                <p class="text-gray-600">Use your location to find the nearest units. Compare prices and features easily.</p>
+                            </div>
+                            <div class="flex flex-col items-center z-10">
+                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">2. Book & Pay</h3>
+                                <p class="text-gray-600">Select your unit, choose dates & services, and pay securely online or on site.</p>
+                            </div>
+                            <div class="flex flex-col items-center z-10">
+                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">3. Move In</h3>
+                                <p class="text-gray-600">Get your access code instantly. Move in yourself or use our pickup service.</p>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="locations" class="py-20 bg-[var(--light-bg)]">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-4">Our Storage Locations</h2>
+                    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">We're finding the best storage locations near you, sorted by distance with available units.</p>
+
+                    <div class="mb-8 flex flex-col sm:flex-row gap-4">
+                        <div class="relative flex-grow">
+                            <input type="text" id="location-search-input" placeholder="Enter an address or landmark..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] transition">
+                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        <button id="use-my-location-btn" class="btn-primary px-5 py-3 rounded-lg font-semibold flex items-center justify-center gap-2">
+                            <i id="location-btn-icon" class="fas fa-location-arrow"></i>
+                            <span id="location-btn-text">Use My Location</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-1 h-[600px] overflow-y-auto pr-2 space-y-4">
+                            <div id="location-list-skeleton">
+                                <div class="bg-white p-4 rounded-lg border border-gray-200 space-y-3 skeleton">
+                                    <div class="h-5 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border border-gray-200 space-y-3 skeleton mt-4">
+                                    <div class="h-5 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                </div>
+                            </div>
+                            <div id="locations-list-container" class="space-y-4">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-2 rounded-lg shadow-xl overflow-hidden min-h-[400px] lg:h-[600px] bg-gray-200">
+                            <div id="map" style="height: 100%; width: 100%;">
+                                <div class="flex items-center justify-center h-full">
+                                    <p class="text-gray-500">Loading map...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="py-20">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                    <div id="faq-container" class="space-y-4">
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-gray-800 text-gray-300">
+                <div class="container mx-auto px-6 py-12">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                        <div>
+                            <a href="#" class="text-3xl font-extrabold text-[var(--primary-blue)] tracking-tighter nav-link" data-target="home">STORAPEDIA</a>
+                            <p class="mt-4 text-gray-400 max-w-xs mx-auto md:mx-0">Your trusted partner for secure, simple, and smart storage solutions across the nation.</p>
+                            <div class="mt-6 flex justify-center md:justify-start space-x-5" id="footer-social-media">
+                                </div>
+                        </div>
+                        <div class="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-8" id="footer-links-container">
+                                </div>
+                    </div>
+                    <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-500">
+                        <p>&copy; <span id="copyright-year">2025</span> Storapedia. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="user-dashboard" class="section container mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+            <h1 class="text-4xl font-bold mb-8">My Dashboard</h1>
+            <div id="dashboard-content-loader" class="text-center py-10">
+                <i class="fas fa-spinner fa-spin text-4xl text-[var(--primary-blue)]"></i>
+                <p class="mt-4 text-gray-600">Loading your dashboard...</p>
+            </div>
+            <div id="dashboard-content" class="hidden grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl font-semibold mb-4">My Bookings</h2>
+                    <div id="bookings-list" class="space-y-6">
+                    </div>
+                </div>
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 sticky top-28">
+                        <h2 class="text-2xl font-semibold mb-4">My Profile</h2>
+                        <div id="profile-details" class="space-y-3">
+                        </div>
+                        <button id="edit-profile-btn" class="mt-6 w-full text-[var(--primary-blue)] font-semibold py-2 px-4 rounded-lg border-2 border-[var(--primary-blue)] hover:bg-[var(--primary-blue)] hover:text-white transition">
+                            <i class="fas fa-edit mr-2"></i>Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl relative transform transition-all" id="auth-modal-content">
+            <button id="close-auth-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
+            <h2 id="auth-title" class="text-2xl font-bold text-center mb-6">Login</h2>
+            <form id="auth-form" class="space-y-4">
+                <input type="hidden" id="auth-mode" value="login">
+                <div id="name-field-container" class="hidden">
+                    <label for="auth-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input id="auth-name" name="name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                </div>
+                <div id="phone-field-container" class="hidden">
+                    <label for="auth-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input id="auth-phone" name="phone" type="tel" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                </div>
+                <div>
+                    <label for="auth-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input id="auth-email" name="email" type="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                </div>
+                <div>
+                    <label for="auth-password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input id="auth-password" name="password" type="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                </div>
+                <div>
+                    <button type="submit" id="auth-submit-btn" class="w-full flex justify-center py-3 px-4 mt-4 border border-transparent rounded-md shadow-sm text-base font-medium btn-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary-blue)]">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <p id="auth-toggle-text" class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account? <button id="auth-toggle-btn" class="font-medium text-[var(--primary-blue)] hover:text-[var(--secondary-blue)]">Sign Up</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white w-full max-w-2xl rounded-xl shadow-2xl relative transform transition-all flex flex-col max-h-[90vh]">
+            <div class="p-6 border-b border-gray-200">
+                    <button id="close-booking-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
+                    <h2 class="text-2xl font-bold mb-1"><span id="booking-modal-title">Book Your Unit</span></h2>
+                    <p id="booking-location-name" class="text-gray-500"></p>
+            </div>
+
+            <div class="p-6 sm:p-8 flex-grow overflow-y-auto">
+                <form id="booking-form" class="space-y-4">
+                    <input type="hidden" id="booking-location-id">
+                    <input type="hidden" id="booking-booking-id"> <div id="booking-step-1" class="booking-step active space-y-5">
+                            <div id="guest-booking-details" class="hidden space-y-4 bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <p class="text-sm font-medium text-blue-800">Please provide your details to continue. We'll create an account for you automatically.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="booking-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                        <input id="booking-name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                    <div>
+                                        <label for="booking-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                                        <input id="booking-phone" type="tel" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="booking-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input id="booking-email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="booking-size" class="block text-sm font-medium text-gray-700">1. Select Unit Size</label>
+                                <select id="booking-size" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </select>
+                            </div>
+                            <div id="booking-dates-container">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="booking-start-date" class="block text-sm font-medium text-gray-700">2. Select Start Date</label>
+                                        <input id="booking-start-date" type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                    <div>
+                                        <label for="booking-start-time" class="block text-sm font-medium text-gray-700">Select Start Time</label>
+                                        <input id="booking-start-time" type="time" value="09:00" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                                    <div>
+                                        <label for="booking-end-date" class="block text-sm font-medium text-gray-700">3. Select End Date</label>
+                                        <input id="booking-end-date" type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                    <div>
+                                        <label for="booking-end-time" class="block text-sm font-medium text-gray-700">Select End Time</label>
+                                        <input id="booking-end-time" type="time" value="17:00" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="booking-service-options">
+                                <label class="block text-sm font-medium text-gray-700">4. Choose Service Option</label>
+                                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label>
+                                        <input type="radio" name="service-option" value="self-dropoff" class="sr-only" checked>
+                                        <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
+                                            <i class="fas fa-people-carry-box mr-2"></i>I'll Move In Myself
+                                        </span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="service-option" value="pickup" class="sr-only">
+                                                <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
+                                            <i class="fas fa-truck mr-2"></i>Schedule Pickup (<span id="pickup-fee-display"></span>)
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="booking-step-2" class="booking-step space-y-4">
+                            <h3 class="text-lg font-semibold">Pickup Details</h3>
+                            <p class="text-sm bg-yellow-100 text-yellow-800 p-3 rounded-md">Pickup service adds a flat fee of <strong id="pickup-fee-display-large"></strong>. Please provide your address.</p>
+                            <div>
+                                <label for="pickup-address-input" class="block text-sm font-medium text-gray-700">Find Address or Drag Pin</label>
+                                <div class="relative">
+                                    <input id="pickup-address-input" type="text" placeholder="Start typing your address..." class="mt-1 block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
+                                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div id="pickup-map-container" class="w-full h-64 bg-gray-200 rounded-lg shadow-inner overflow-hidden relative">
+                                        <div id="pickup-map" class="w-full h-full"></div>
+                                        <button type="button" id="pickup-detect-location" class="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-lg text-gray-600 hover:text-[var(--primary-blue)]" title="Detect my location">
+                                        <i class="fas fa-location-crosshairs text-lg"></i>
+                                </div>
+                            </div>
+
+                        <div id="booking-step-3" class="booking-step space-y-6">
+                            <div id="booking-summary" class="space-y-2">
+                                <h3 class="text-lg font-semibold">Booking Summary</h3>
+                                <div class="flex justify-between text-gray-600"><span>Storage (<span id="summary-days">0 days</span>)</span><span id="summary-storage-cost">Rp 0</span></div>
+                                <div id="summary-pickup-row" class="flex justify-between text-gray-600"><span>Pickup Service</span><span id="summary-pickup-cost">Rp 0</span></div>
+                                <div class="flex justify-between font-bold text-xl text-[var(--dark-text)]"><span>Total Price</span><span id="summary-total-price">Rp 0</span></div>
+                            </div>
+                            <div class="border-t pt-5">
+                                <label class="block text-lg font-semibold text-gray-700">Payment Method</label>
+                                <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label>
+                                        <input type="radio" name="payment-option" value="online" class="sr-only" checked>
+                                        <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
+                                            <i class="fas fa-credit-card mr-2"></i>Pay Now (Online)
+                                        </span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="payment-option" value="unpaid_on_site" class="sr-only"> <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
+                                                <i class="fas fa-cash-register mr-2"></i>Pay on Site
+                                                </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+
+            <div class="p-6 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
+                <button id="booking-back-btn" class="font-semibold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg">Back</button>
+                <button id="booking-next-btn" class="btn-primary font-semibold px-8 py-2 rounded-lg text-lg">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-[110] p-4">
+        <div class="bg-white w-full max-w-sm p-8 rounded-xl shadow-2xl relative">
+            <button id="close-qr-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold text-center mb-6">Your Booking QR Code</h2>
+            <div class="flex justify-center mb-6">
+                <canvas id="qrcode-canvas" class="w-48 h-48 border border-gray-300 rounded-lg"></canvas>
+            </div>
+            <p class="text-center text-gray-600">Scan this QR code at the facility for quick access to your unit.</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_Maps_API_KEY%&libraries=places,geometry&callback=initMap"></script>
+
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="%REACT_APP_MIDTRANS_CLIENT_KEY%"></script>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
