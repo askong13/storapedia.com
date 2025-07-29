@@ -1,396 +1,831 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storapedia</title>
-
+    <title>Proposal Kerjasama | Siska Handiska Creative & Jmpartner.id untuk RSIA Indira</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* === CSS RESET & GLOBAL STYLES === */
+        :root {
+            --pink: #E94057; /* Warna utama Siska H. Creative */
+            --blue: #4A90E2; /* Warna utama Jmpartner.id */
+            --dark-grey: #333;
+            --light-grey: #f4f7f6;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--pink), var(--blue));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="assets/css/style.css">
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Offset for fixed navbar */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-grey);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-grey);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn i { margin-right: 8px; }
+
+        /* Fade-in animation on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* === NAVBAR === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-pink { color: var(--pink); }
+        .logo-blue { color: var(--blue); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-grey);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-grey);
+        }
+
+
+        /* === HERO/BANNER SECTION === */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background: var(--gradient);
+            position: relative;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        
+        .hero-content .subtitle {
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 10px 0 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content .client-logo {
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        
+        .hero-content .client-logo i {
+            margin-right: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+
+
+        /* === SOLUTION SECTION === */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .solution-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .solution-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Features */
+        .features-container {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .feature-block {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .feature-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .feature-block.pink h3 { border-bottom: 3px solid var(--pink); color: var(--pink); }
+        .feature-block.blue h3 { border-bottom: 3px solid var(--blue); color: var(--blue); }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list i {
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        .feature-list .pink i { color: var(--pink); }
+        .feature-list .blue i { color: var(--blue); }
+
+        /* === PARALLEL DEVELOPMENT SECTION === */
+        .parallel-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .parallel-icon {
+            font-size: 8rem;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .parallel-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* === TEAM / PROFILE SECTION === */
+        .team-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: stretch; /* Make cards same height */
+        }
+
+        .profile-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .profile-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+        .profile-card.pink .profile-icon { background: var(--pink); }
+        .profile-card.blue .profile-icon { background: var(--blue); }
+        
+        .profile-card .brand-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .profile-card .brand-name.pink { color: var(--pink); }
+        .profile-card .brand-name.blue { color: var(--blue); }
+
+        .profile-card .tagline {
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        /* === INVESTMENT & TIMELINE SECTION === */
+        .investment-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .investment-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .investment-card h3 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .investment-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .scope-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .scope-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .scope-list i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .scope-list .fa-check-circle { color: #2ecc71; }
+        .scope-list .fa-times-circle { color: #e74c3c; }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--light-grey);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 4px solid var(--blue);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover::before {
+             background: var(--pink);
+             border-color: var(--pink);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .timeline-content .phase {
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--dark-grey);
+            color: var(--light-grey);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .footer-copyright {
+            border-top: 1px solid #444;
+            padding-top: 30px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .features-container, .team-container, .investment-container, .parallel-container {
+                grid-template-columns: 1fr;
+            }
+            .parallel-icon {
+                font-size: 6rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 70px; }
+            .navbar { padding: 10px 0; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 70px; /* Navbar height */
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            .nav-links.active {
+                max-height: 500px; /* Arbitrary large value */
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+            }
+
+            section { padding: 80px 0; }
+            .section-title h2 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content .subtitle { font-size: 1rem; }
+        }
+        
+    </style>
 </head>
-<body class="bg-white">
+<body>
 
-<header id="header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <a href="#" class="text-3xl font-extrabold text-[var(--primary-blue)] tracking-tighter nav-link" data-target="home">STORAPEDIA</a>
-        <div class="hidden lg:flex items-center space-x-8">
-            <a href="#locations" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="locations">Locations</a>
-            <a href="#how-it-works" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="how-it-works">How It Works</a>
-            <a href="#faq" class="text-gray-600 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="faq">FAQ</a>
-        </div>
-        <div class="flex items-center space-x-4">
-            <div id="notification-area" class="relative hidden">
-                <button id="notification-button" class="text-gray-600 hover:text-[var(--primary-blue)] text-2xl relative">
-                    <i class="fas fa-bell"></i>
-                    <span id="notification-count" class="notification-badge">0</span>
-                </button>
-            </div>
-            <div id="auth-links" class="md:flex items-center space-x-4">
-                <button id="login-btn" class="text-gray-600 font-semibold hover:text-[var(--primary-blue)] px-4 py-2">Login</button>
-                <button id="signup-btn" class="btn-primary font-semibold px-5 py-2 rounded-lg">Sign Up</button>
-            </div>
-            <div id="user-menu" class="hidden relative">
-                <button id="user-menu-button" class="flex items-center space-x-2">
-                    <span id="user-greeting" class="font-semibold text-gray-700 hidden sm:block"></span>
-                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user text-gray-500"></i>
-                    </div>
-                </button>
-                <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-50 py-1 border border-gray-100">
-                    <a href="#" id="dashboard-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i class="fas fa-tachometer-alt fa-fw mr-2"></i>Dashboard</a>
-                    <a href="#" id="logout-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i class="fas fa-sign-out-alt fa-fw mr-2"></i>Logout</a>
-                </div>
-            </div>
-            <div class="lg:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 hover:text-[var(--primary-blue)] text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">
+                <span class="logo-pink">Siska H.</span> & <span class="logo-blue">Jmpartner</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#solusi">Solusi</a></li>
+                <li><a href="#paralel">Masa Depan</a></li>
+                <li><a href="#tim">Profil Tim</a></li>
+                <li><a href="#investasi">Investasi</a></li>
+                <li><a href="#kontak" class="btn"><i class="fab fa-whatsapp"></i> Janji Temu</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-        <a href="#locations" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="locations">Locations</a>
-        <a href="#how-it-works" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="how-it-works">How It Works</a>
-        <a href="#faq" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-[var(--primary-blue)] font-medium nav-link" data-target="faq">FAQ</a>
-        <div id="mobile-auth-links" class="border-t border-gray-200 p-4 space-y-3">
-            <button id="mobile-login-btn" class="w-full text-center text-gray-600 font-semibold hover:text-[var(--primary-blue)] px-4 py-2 rounded-lg border border-gray-300">Login</button>
-            <button id="mobile-signup-btn" class="w-full btn-primary font-semibold px-5 py-2 rounded-lg">Sign Up</button>
-        </div>
-    </div>
-</header>
 
     <main>
-        <div id="main-content" class="section active">
-            <section id="home" class="relative overflow-hidden bg-[var(--light-bg)]">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40 text-center">
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-[var(--dark-text)] leading-tight tracking-tighter">Secure, Simple, Smart Storage.</h1>
-                    <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Find affordable and accessible self-storage units near you. Book online in minutes.</p>
-                    <div class="mt-10">
-                        <a href="#locations" class="btn-primary font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 nav-link" data-target="locations">Find Storage Now</a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="how-it-works" class="py-20">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-16">How It Works in 3 Easy Steps</h2>
-                    <div class="grid md:grid-cols-3 gap-10 text-center relative">
-                            <div class="hidden md:block absolute top-1/2 left-0 w-full h-px">
-                                <svg width="100%" height="2"><line x1="0" y1="1" x2="100%" y2="1" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8 8"/></svg>
-                            </div>
-                            <div class="flex flex-col items-center z-10">
-                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">1. Find & Compare</h3>
-                                <p class="text-gray-600">Use your location to find the nearest units. Compare prices and features easily.</p>
-                            </div>
-                            <div class="flex flex-col items-center z-10">
-                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">2. Book & Pay</h3>
-                                <p class="text-gray-600">Select your unit, choose dates & services, and pay securely online or on site.</p>
-                            </div>
-                            <div class="flex flex-col items-center z-10">
-                                <div class="bg-white border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-5 shadow-lg">
-                                    <i class="fas fa-key"></i>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">3. Move In</h3>
-                                <p class="text-gray-600">Get your access code instantly. Move in yourself or use our pickup service.</p>
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="locations" class="py-20 bg-[var(--light-bg)]">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-4">Our Storage Locations</h2>
-                    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">We're finding the best storage locations near you, sorted by distance with available units.</p>
-
-                    <div class="mb-8 flex flex-col sm:flex-row gap-4">
-                        <div class="relative flex-grow">
-                            <input type="text" id="location-search-input" placeholder="Enter an address or landmark..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] transition">
-                            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                        </div>
-                        <button id="use-my-location-btn" class="btn-primary px-5 py-3 rounded-lg font-semibold flex items-center justify-center gap-2">
-                            <i id="location-btn-icon" class="fas fa-location-arrow"></i>
-                            <span id="location-btn-text">Use My Location</span>
-                        </button>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <div class="lg:col-span-1 h-[600px] overflow-y-auto pr-2 space-y-4">
-                            <div id="location-list-skeleton">
-                                <div class="bg-white p-4 rounded-lg border border-gray-200 space-y-3 skeleton">
-                                    <div class="h-5 bg-gray-200 rounded w-3/4"></div>
-                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
-                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg border border-gray-200 space-y-3 skeleton mt-4">
-                                    <div class="h-5 bg-gray-200 rounded w-3/4"></div>
-                                    <div class="h-4 bg-gray-200 rounded w-full"></div>
-                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                                </div>
-                            </div>
-                            <div id="locations-list-container" class="space-y-4">
-                            </div>
-                        </div>
-                        <div class="lg:col-span-2 rounded-lg shadow-xl overflow-hidden min-h-[400px] lg:h-[600px] bg-gray-200">
-                            <div id="map" style="height: 100%; width: 100%;">
-                                <div class="flex items-center justify-center h-full">
-                                    <p class="text-gray-500">Loading map...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" class="py-20">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-                    <div id="faq-container" class="space-y-4">
-                    </div>
-                </div>
-            </section>
-
-            <footer class="bg-gray-800 text-gray-300">
-                <div class="container mx-auto px-6 py-12">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                        <div>
-                            <a href="#" class="text-3xl font-extrabold text-[var(--primary-blue)] tracking-tighter nav-link" data-target="home">STORAPEDIA</a>
-                            <p class="mt-4 text-gray-400 max-w-xs mx-auto md:mx-0">Your trusted partner for secure, simple, and smart storage solutions across the nation.</p>
-                            <div class="mt-6 flex justify-center md:justify-start space-x-5" id="footer-social-media">
-                                </div>
-                        </div>
-                        <div class="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-8" id="footer-links-container">
-                                </div>
-                    </div>
-                    <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-500">
-                        <p>&copy; <span id="copyright-year">2025</span> Storapedia. All Rights Reserved.</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-
-        <div id="user-dashboard" class="section container mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
-            <h1 class="text-4xl font-bold mb-8">My Dashboard</h1>
-            <div id="dashboard-content-loader" class="text-center py-10">
-                <i class="fas fa-spinner fa-spin text-4xl text-[var(--primary-blue)]"></i>
-                <p class="mt-4 text-gray-600">Loading your dashboard...</p>
+        <section id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-content reveal">
+                <p class="subtitle">Proposal Kerjasama Strategis</p>
+                <h1>Pengembangan Sistem Informasi Rumah Sakit Terintegrasi</h1>
+                <p class="client-logo"><i class="fa-solid fa-hospital"></i>Untuk RSIA Indira</p>
+                <a href="#solusi" class="btn">Lihat Detail Solusi</a>
             </div>
-            <div id="dashboard-content" class="hidden grid lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2">
-                    <h2 class="text-2xl font-semibold mb-4">My Bookings</h2>
-                    <div id="bookings-list" class="space-y-6">
+        </section>
+
+        <section id="solusi">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Solusi yang Ditawarkan: SIRS Terintegrasi</h2>
+                    <p>Fondasi digital yang kuat, dirancang untuk efisiensi saat ini dan pertumbuhan di masa depan. Kami membangun sistem yang fleksibel dan skalabel.</p>
+                </div>
+                
+                <div class="solution-grid">
+                    <div class="solution-card reveal" style="transition-delay: 0.1s;">
+                        <div class="icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>Modular</h3>
+                        <p>Implementasi fitur secara bertahap sesuai prioritas dan anggaran. Mulai dari yang esensial, kembangkan kemudian.</p>
+                    </div>
+                    <div class="solution-card reveal" style="transition-delay: 0.2s;">
+                        <div class="icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Skalabel</h3>
+                        <p>Sistem dirancang untuk menangani pertumbuhan data dan pengguna tanpa perlu perombakan besar di masa mendatang.</p>
+                    </div>
+                    <div class="solution-card reveal" style="transition-delay: 0.3s;">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Fleksibel & Terintegrasi</h3>
+                        <p>Arsitektur berbasis API memungkinkan integrasi mulus dengan modul lain atau sistem eksternal di kemudian hari.</p>
                     </div>
                 </div>
-                <div class="lg:col-span-1">
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 sticky top-28">
-                        <h2 class="text-2xl font-semibold mb-4">My Profile</h2>
-                        <div id="profile-details" class="space-y-3">
-                        </div>
-                        <button id="edit-profile-btn" class="mt-6 w-full text-[var(--primary-blue)] font-semibold py-2 px-4 rounded-lg border-2 border-[var(--primary-blue)] hover:bg-[var(--primary-blue)] hover:text-white transition">
-                            <i class="fas fa-edit mr-2"></i>Edit Profile
-                        </button>
+
+                <div class="features-container">
+                    <div class="feature-block pink reveal">
+                        <h3><i class="fas fa-user-edit"></i>Modul Registrasi & Reservasi</h3>
+                        <ul class="feature-list pink">
+                            <li><i class="fas fa-check-circle"></i>Manajemen Data Pasien Baru & Lama</li>
+                            <li><i class="fas fa-check-circle"></i>Pencarian Pasien (Nama, NIK, No. RM)</li>
+                            <li><i class="fas fa-check-circle"></i>Reservasi Janji Temu dengan Dokter/Poli</li>
+                            <li><i class="fas fa-check-circle"></i>Manajemen Jadwal Praktik Dokter</li>
+                        </ul>
+                    </div>
+                    <div class="feature-block blue reveal">
+                        <h3><i class="fas fa-bed"></i>Modul Pemesanan Kamar</h3>
+                         <ul class="feature-list blue">
+                            <li><i class="fas fa-check-circle"></i>Manajemen Data Kamar (Tipe, Fasilitas)</li>
+                            <li><i class="fas fa-check-circle"></i>Visualisasi Ketersediaan Kamar Real-time</li>
+                            <li><i class="fas fa-check-circle"></i>Sistem Pemesanan & Alokasi Kamar Inap</li>
+                            <li><i class="fas fa-check-circle"></i>Laporan Dasar Tingkat Hunian Kamar</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <section id="paralel">
+            <div class="container">
+                 <div class="section-title reveal">
+                    <h2>Pengembangan Paralel & Siap Masa Depan</h2>
+                    <p>Kami tidak hanya membangun fitur, tapi sebuah ekosistem. Pendekatan kami memastikan sistem Anda siap untuk tumbuh bersama RSIA Indira.</p>
+                </div>
+                <div class="parallel-container">
+                    <div class="parallel-icon reveal">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="parallel-text reveal" style="transition-delay: 0.2s;">
+                        <h3>Arsitektur yang Disiapkan untuk Fitur Lanjutan</h3>
+                        <p>Sistem ini dibangun dengan pendekatan paralel. Artinya, saat kami mengembangkan modul inti (Pemesanan Kamar & Reservasi), kami secara bersamaan membangun fondasi arsitektur yang kokoh. </p>
+                        <br>
+                        <p>Struktur basis data, sistem otentikasi, dan rancangan API telah kami siapkan untuk dapat mengakomodasi pengembangan fitur-fitur lanjutan di masa depan secara mulus, seperti:</p>
+                        <ul class="feature-list" style="margin-top: 15px;">
+                            <li class="blue"><i class="fas fa-file-medical"></i>E-Rekam Medis (EMR)</li>
+                            <li class="blue"><i class="fas fa-pills"></i>Modul Farmasi & Apotek</li>
+                            <li class="blue"><i class="fas fa-user-md"></i>Konsultasi Online (Telemedicine)</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Pendekatan ini akan menghemat waktu dan biaya secara signifikan saat RSIA Indira memutuskan untuk melakukan ekspansi fitur di fase berikutnya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tim">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Profil Kemitraan Strategis</h2>
+                    <p>Sinergi antara keahlian desain kreatif dan rekayasa perangkat lunak untuk hasil yang maksimal.</p>
+                </div>
+                <div class="team-container">
+                    <div class="profile-card pink reveal" style="transition-delay: 0.1s;">
+                        <div class="profile-icon"><i class="fas fa-palette"></i></div>
+                        <h3 class="brand-name pink">Siska Handiska Creative</h3>
+                        <p class="tagline">Human-Centered Design & UX</p>
+                        <p>Berfokus pada perancangan antarmuka (UI) yang fungsional dan indah, serta pengalaman pengguna (UX) yang memastikan sistem mudah dipelajari dan efisien untuk alur kerja sehari-hari.</p>
+                    </div>
+                    <div class="profile-card blue reveal" style="transition-delay: 0.2s;">
+                        <div class="profile-icon"><i class="fas fa-code"></i></div>
+                        <h3 class="brand-name blue">Jmpartner.id</h3>
+                        <p class="tagline">Software Engineering & System Architecture</p>
+                        <p>Pilar kekuatan teknis dengan keahlian mendalam dalam rekayasa perangkat lunak dan arsitektur sistem, memastikan produk yang dibangun andal, aman, dan siap untuk pengembangan skala besar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="investasi">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h2>Investasi & Linimasa Proyek</h2>
+                    <p>Transparansi biaya dan perencanaan waktu yang jelas untuk kesuksesan implementasi proyek fase awal.</p>
+                </div>
+                <div class="investment-container">
+                    <div class="investment-card reveal">
+                        <h3>Total Investasi Fase Awal</h3>
+                        <p class="price">Rp 25 Juta</p>
+                        <ul class="scope-list">
+                            <li class="title"><strong>Cakupan Biaya:</strong></li>
+                            <li><i class="fas fa-check-circle"></i>Analisis & Desain Sistem</li>
+                            <li><i class="fas fa-check-circle"></i>Pengembangan 2 Modul Inti</li>
+                            <li><i class="fas fa-check-circle"></i>Pengujian & Implementasi</li>
+                            <li><i class="fas fa-check-circle"></i>Pelatihan & Dokumentasi</li>
+                            <li class="title" style="margin-top:15px;"><strong>Di Luar Cakupan:</strong></li>
+                            <li><i class="fas fa-times-circle"></i>Biaya Hosting & Server</li>
+                            <li><i class="fas fa-times-circle"></i>Biaya Pemeliharaan Lanjutan</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-container reveal" style="transition-delay: 0.2s;">
+                        <h3>Linimasa Proyek Cepat: 2 Minggu</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <span class="phase">Minggu 1</span>
+                                <h4>Analisis, Desain & Pengembangan Inti</h4>
+                                <p>Kick-off, analisis cepat (rapid analysis), desain UI/UX prioritas, dan pengembangan paralel (backend & frontend) untuk modul inti.</p>
+                            </div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-content">
+                                <span class="phase">Minggu 2</span>
+                                <h4>Pengujian, Implementasi & Pelatihan</h4>
+                                <p>Pengujian fungsional menyeluruh, implementasi awal (deployment), sesi pelatihan staf, dan serah terima sistem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl relative transform transition-all" id="auth-modal-content">
-            <button id="close-auth-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
-            <h2 id="auth-title" class="text-2xl font-bold text-center mb-6">Login</h2>
-            <form id="auth-form" class="space-y-4">
-                <input type="hidden" id="auth-mode" value="login">
-                <div id="name-field-container" class="hidden">
-                    <label for="auth-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input id="auth-name" name="name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                </div>
-                <div id="phone-field-container" class="hidden">
-                    <label for="auth-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <input id="auth-phone" name="phone" type="tel" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                </div>
-                <div>
-                    <label for="auth-email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input id="auth-email" name="email" type="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                </div>
-                <div>
-                    <label for="auth-password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input id="auth-password" name="password" type="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                </div>
-                <div>
-                    <button type="submit" id="auth-submit-btn" class="w-full flex justify-center py-3 px-4 mt-4 border border-transparent rounded-md shadow-sm text-base font-medium btn-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary-blue)]">
-                        Login
-                    </button>
-                </div>
-            </form>
-            <p id="auth-toggle-text" class="mt-6 text-center text-sm text-gray-600">
-                Don't have an account? <button id="auth-toggle-btn" class="font-medium text-[var(--primary-blue)] hover:text-[var(--secondary-blue)]">Sign Up</button>
-            </p>
-        </div>
-    </div>
-
-    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white w-full max-w-2xl rounded-xl shadow-2xl relative transform transition-all flex flex-col max-h-[90vh]">
-            <div class="p-6 border-b border-gray-200">
-                    <button id="close-booking-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
-                    <h2 class="text-2xl font-bold mb-1"><span id="booking-modal-title">Book Your Unit</span></h2>
-                    <p id="booking-location-name" class="text-gray-500"></p>
+    <footer id="kontak">
+        <div class="container reveal">
+            <div class="footer-content">
+                <h3>Siap Memulai Transformasi Digital RSIA Indira?</h3>
+                <p>Kami sangat antusias untuk berdiskusi lebih lanjut. Mari jadwalkan pertemuan untuk membahas bagaimana kami dapat membantu mewujudkan visi Anda dalam waktu singkat.</p>
+                <a href="https://wa.me/6281274564564" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Buat Janji Temu Sekarang</a>
             </div>
-
-            <div class="p-6 sm:p-8 flex-grow overflow-y-auto">
-                <form id="booking-form" class="space-y-4">
-                    <input type="hidden" id="booking-location-id">
-                    <input type="hidden" id="booking-booking-id"> <div id="booking-step-1" class="booking-step active space-y-5">
-                            <div id="guest-booking-details" class="hidden space-y-4 bg-blue-50 p-4 rounded-lg border border-blue-200">
-                                <p class="text-sm font-medium text-blue-800">Please provide your details to continue. We'll create an account for you automatically.</p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="booking-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                        <input id="booking-name" type="text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                    <div>
-                                        <label for="booking-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                        <input id="booking-phone" type="tel" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="booking-email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                    <input id="booking-email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="booking-size" class="block text-sm font-medium text-gray-700">1. Select Unit Size</label>
-                                <select id="booking-size" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </select>
-                            </div>
-                            <div id="booking-dates-container">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="booking-start-date" class="block text-sm font-medium text-gray-700">2. Select Start Date</label>
-                                        <input id="booking-start-date" type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                    <div>
-                                        <label for="booking-start-time" class="block text-sm font-medium text-gray-700">Select Start Time</label>
-                                        <input id="booking-start-time" type="time" value="09:00" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                                    <div>
-                                        <label for="booking-end-date" class="block text-sm font-medium text-gray-700">3. Select End Date</label>
-                                        <input id="booking-end-date" type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                    <div>
-                                        <label for="booking-end-time" class="block text-sm font-medium text-gray-700">Select End Time</label>
-                                        <input id="booking-end-time" type="time" value="17:00" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="booking-service-options">
-                                <label class="block text-sm font-medium text-gray-700">4. Choose Service Option</label>
-                                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <label>
-                                        <input type="radio" name="service-option" value="self-dropoff" class="sr-only" checked>
-                                        <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
-                                            <i class="fas fa-people-carry-box mr-2"></i>I'll Move In Myself
-                                        </span>
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="service-option" value="pickup" class="sr-only">
-                                                <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
-                                            <i class="fas fa-truck mr-2"></i>Schedule Pickup (<span id="pickup-fee-display"></span>)
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="booking-step-2" class="booking-step space-y-4">
-                            <h3 class="text-lg font-semibold">Pickup Details</h3>
-                            <p class="text-sm bg-yellow-100 text-yellow-800 p-3 rounded-md">Pickup service adds a flat fee of <strong id="pickup-fee-display-large"></strong>. Please provide your address.</p>
-                            <div>
-                                <label for="pickup-address-input" class="block text-sm font-medium text-gray-700">Find Address or Drag Pin</label>
-                                <div class="relative">
-                                    <input id="pickup-address-input" type="text" placeholder="Start typing your address..." class="mt-1 block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]">
-                                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                </div>
-                            </div>
-                            <div id="pickup-map-container" class="w-full h-64 bg-gray-200 rounded-lg shadow-inner overflow-hidden relative">
-                                        <div id="pickup-map" class="w-full h-full"></div>
-                                        <button type="button" id="pickup-detect-location" class="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-lg text-gray-600 hover:text-[var(--primary-blue)]" title="Detect my location">
-                                        <i class="fas fa-location-crosshairs text-lg"></i>
-                                </div>
-                            </div>
-
-                        <div id="booking-step-3" class="booking-step space-y-6">
-                            <div id="booking-summary" class="space-y-2">
-                                <h3 class="text-lg font-semibold">Booking Summary</h3>
-                                <div class="flex justify-between text-gray-600"><span>Storage (<span id="summary-days">0 days</span>)</span><span id="summary-storage-cost">Rp 0</span></div>
-                                <div id="summary-pickup-row" class="flex justify-between text-gray-600"><span>Pickup Service</span><span id="summary-pickup-cost">Rp 0</span></div>
-                                <div class="flex justify-between font-bold text-xl text-[var(--dark-text)]"><span>Total Price</span><span id="summary-total-price">Rp 0</span></div>
-                            </div>
-                            <div class="border-t pt-5">
-                                <label class="block text-lg font-semibold text-gray-700">Payment Method</label>
-                                <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <label>
-                                        <input type="radio" name="payment-option" value="online" class="sr-only" checked>
-                                        <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
-                                            <i class="fas fa-credit-card mr-2"></i>Pay Now (Online)
-                                        </span>
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="payment-option" value="unpaid_on_site" class="sr-only"> <span class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-200">
-                                                <i class="fas fa-cash-register mr-2"></i>Pay on Site
-                                                </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                </form>
-            </div>
-
-            <div class="p-6 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
-                <button id="booking-back-btn" class="font-semibold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg">Back</button>
-                <button id="booking-next-btn" class="btn-primary font-semibold px-8 py-2 rounded-lg text-lg">Next</button>
+            <div class="footer-copyright">
+                &copy; 2025 Kemitraan Strategis Siska Handiska Creative & Jmpartner.id. All Rights Reserved.
             </div>
         </div>
-    </div>
+    </footer>
 
-    <div id="qr-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-[110] p-4">
-        <div class="bg-white w-full max-w-sm p-8 rounded-xl shadow-2xl relative">
-            <button id="close-qr-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl">&times;</button>
-            <h2 class="text-2xl font-bold text-center mb-6">Your Booking QR Code</h2>
-            <div class="flex justify-center mb-6">
-                <canvas id="qrcode-canvas" class="w-48 h-48 border border-gray-300 rounded-lg"></canvas>
-            </div>
-            <p class="text-center text-gray-600">Scan this QR code at the facility for quick access to your unit.</p>
-        </div>
-    </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_Maps_API_KEY%&libraries=places,geometry&callback=initMap"></script>
+            // --- NAVBAR STYLING ON SCROLL ---
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
 
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="%REACT_APP_MIDTRANS_CLIENT_KEY%"></script>
+            // --- MOBILE MENU TOGGLE ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                     if (navLinks.classList.contains('active')) {
+                         navLinks.classList.remove('active');
+                     }
+                });
+            });
 
-    <script src="assets/js/main.js"></script>
+
+            // --- ACTIVE NAV LINK ON SCROLL ---
+            const sections = document.querySelectorAll('main section');
+            const navLi = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 90) { // 90px offset
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (!a.href.includes("#kontak") && a.getAttribute('href').endsWith('#' + current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+            // --- FADE-IN ANIMATION ON SCROLL ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(elem => {
+                revealObserver.observe(elem);
+            });
+
+        });
+    </script>
 </body>
 </html>
