@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siska Handiska Creative & Jmpartner.id - Solusi Website Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === CSS RESET & GLOBAL STYLES === */
+        :root {
+            --primary-blue: #0a2540;
+            --accent-pink: #e44d85;
+            --light-bg: #f6f9fc;
+            --white: #ffffff;
+            --text-dark: #333;
+            --text-light: #f8f9fa;
+            --border-color: #e6ebf1;
+            /* -- NEW GRADIENT VARIABLE -- */
+            --brand-gradient: linear-gradient(120deg, var(--accent-pink) 0%, #3f5efb 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        /* === FADE-IN ANIMATION === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === HEADER -- UPDATED WITH GRADIENT === */
+        .main-header {
+            background: var(--brand-gradient);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white); /* Text color changed to white */
+            text-decoration: none;
+        }
+
+        /* === HERO SECTION -- UPDATED WITH GRADIENT === */
+        .hero {
+            background: var(--brand-gradient);
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: var(--white); /* Text color changed to white */
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-light); /* Text color changed to light */
+        }
+
+        /* === PACKAGES SECTION === */
+        .packages-section {
+             background-color: var(--light-bg);
+        }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .package-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-card-content {
+            flex-grow: 1;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+        .package-card .ideal-for {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .package-card ul {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        
+        .package-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        .package-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-pink);
+            font-weight: 700;
+        }
+
+        /* -- UPDATED PRICING SECTION -- */
+        .investment {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .investment p { margin-bottom: 0; }
+        .investment .price-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #888;
+        }
+        .investment .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 5px 0;
+        }
+        .investment .renewal-info {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        /* === COMPARISON TABLE SECTION === */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--white);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .comparison-table td:nth-child(1) {
+            font-weight: 600;
+        }
+        
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+        
+        .comparison-table .check {
+            color: var(--accent-pink);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+
+        .cta-section .service-selection {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-selection input[type="radio"] {
+            display: none;
+        }
+
+        .service-selection label {
+            padding: 12px 25px;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            background-color: var(--white);
+        }
+
+        .service-selection input[type="radio"]:checked + label {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        
+        .service-selection label:hover {
+            border-color: var(--accent-pink);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--brand-gradient);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0, 0.2);
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0,0,0, 0.3);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="brand-logo">Siska Handiska Creative & Jmpartner.id</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container fade-in">
+                <h1>Solusi Website Profesional untuk Bisnis Anda</h1>
+                <p>Kami hadir sebagai mitra teknologi Anda, merancang dan membangun website yang tidak hanya indah, tetapi juga berfungsi optimal untuk mencapai tujuan bisnis Anda dan menjadi pusat kehadiran digital yang strategis.</p>
+            </div>
+        </section>
+
+        <section class="packages-section">
+            <div class="container">
+                <h2 class="fade-in">Pilih Paket yang Sesuai Untuk Anda</h2>
+                <div class="packages-grid">
+                    <div class="package-card fade-in">
+                        <div class="package-card-content">
+                            <h3>Paket Foundational</h3>
+                            <p class="ideal-for">Ideal untuk: UKM, Profesional, Startup, Portofolio, dan Organisasi.</p>
+                            <p>Paket ini dirancang untuk bisnis yang ingin membangun citra online yang kredibel, menjangkau audiens baru, dan menyajikan informasi secara efektif.</p>
+                            <ul>
+                                <li>Struktur Website 5 Halaman Esensial</li>
+                                <li>Desain Eksklusif & Responsif (Mobile-First)</li>
+                                <li>Domain & Hosting Bisnis (Include)</li>
+                                <li>Platform CMS User-Friendly (WordPress)</li>
+                                <li>Sertifikat SSL (HTTPS) Terpasang</li>
+                                <li>5 Akun Email Profesional (nama@domainanda.com)</li>
+                                <li>Fondasi SEO On-Page</li>
+                                <li>Dukungan Teknis via Email & WhatsApp</li>
+                            </ul>
+                        </div>
+                        <div class="investment">
+                            <p class="price-label">Harga Awal</p>
+                            <p class="price">Rp 1.500.000</p>
+                            <p class="renewal-info">Perpanjangan Rp 850.000 / tahun</p>
+                        </div>
+                    </div>
+
+                    <div class="package-card fade-in">
+                         <div class="package-card-content">
+                            <h3>Paket E-Commerce Pro</h3>
+                            <p class="ideal-for">Ideal untuk: Toko Retail, Brand D2C, dan Bisnis dengan Sistem Pemesanan Online.</p>
+                            <p>Solusi terintegrasi untuk menjual produk atau layanan secara langsung melalui website dengan mesin toko online yang kuat, aman, dan siap bertransaksi.</p>
+                            <ul>
+                                <li><strong>Semua Fitur Paket Foundational</strong></li>
+                                <li>Platform E-commerce Skalabel (WooCommerce)</li>
+                                <li>Manajemen Produk Tanpa Batas</li>
+                                <li>Integrasi Payment Gateway Terpercaya</li>
+                                <li>Manajemen Inventaris & Pesanan Real-Time</li>
+                                <li>Sistem Kupon & Diskon Fleksibel</li>
+                                <li>Optimasi SEO Lanjutan untuk E-commerce</li>
+                                <li>Dukungan Teknis Prioritas</li>
+                            </ul>
+                        </div>
+                         <div class="investment">
+                            <p class="price-label">Investasi Sesuai Skala Bisnis</p>
+                            <p class="price">Harga Kustom</p>
+                            <p class="renewal-info">Hubungi untuk penawaran</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="fade-in">Perbandingan Paket Sekilas</h2>
+                <div class="table-responsive fade-in">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Fitur</th>
+                                <th>Paket Foundational</th>
+                                <th>Paket E-Commerce Pro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Halaman Inti</td>
+                                <td>5 Halaman</td>
+                                <td>5+ Halaman</td>
+                            </tr>
+                            <tr>
+                                <td>Desain Eksklusif & Responsif</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                             <tr>
+                                <td>Domain & Hosting</td>
+                                <td class="check">✓</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>Email Profesional</td>
+                                <td>Hingga 5 Akun</td>
+                                <td>Hingga 10 Akun</td>
+                            </tr>
+                             <tr>
+                                <td>Platform Toko Online</td>
+                                <td>-</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>Integrasi Payment Gateway</td>
+                                <td>-</td>
+                                <td class="check">✓</td>
+                            </tr>
+                             <tr>
+                                <td>Manajemen Produk & Inventaris</td>
+                                <td>-</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>Sistem Kupon & Diskon</td>
+                                <td>-</td>
+                                <td class="check">✓</td>
+                            </tr>
+                            <tr>
+                                <td>Dukungan Teknis</td>
+                                <td>Standar (Email/WA)</td>
+                                <td><strong>Prioritas (WA/Telepon)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container fade-in">
+                <h2>Siap Memulai Proyek Digital Anda?</h2>
+                <p>Pilih layanan yang Anda minati di bawah ini dan hubungi kami untuk memulai.</p>
+                <div class="service-selection">
+                    <input type="radio" id="select-foundational" name="service" value="Paket Foundational">
+                    <label for="select-foundational">Paket Foundational</label>
+
+                    <input type="radio" id="select-ecommerce" name="service" value="Paket E-Commerce Pro" checked>
+                    <label for="select-ecommerce">Paket E-Commerce Pro</label>
+
+                    <input type="radio" id="select-general" name="service" value="Konsultasi Umum">
+                    <label for="select-general">Konsultasi Umum</label>
+                </div>
+                <a href="#" id="whatsapp-cta" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Hubungi via WhatsApp
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Siska Handiska Creative & Jmpartner.id. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. FADE-IN ANIMATION LOGIC
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // 2. WHATSAPP CTA LOGIC
+            const ctaButton = document.getElementById('whatsapp-cta');
+            const serviceRadios = document.querySelectorAll('input[name="service"]');
+            const phoneNumber = '6281274564564';
+
+            function updateCtaLink() {
+                let selectedValue = 'Konsultasi Umum';
+                try {
+                    selectedValue = document.querySelector('input[name="service"]:checked').value;
+                } catch (e) {
+                    console.warn("No service selected, defaulting to 'Konsultasi Umum'.");
+                }
+
+                let message = '';
+                if (selectedValue === 'Konsultasi Umum') {
+                    message = `Halo Siska Handiska Creative & Jmpartner.id, saya ingin berkonsultasi mengenai kebutuhan website untuk bisnis saya. Mohon informasinya. Terima kasih.`;
+                } else {
+                    message = `Halo Siska Handiska Creative & Jmpartner.id, saya tertarik dengan layanan *${selectedValue}* yang saya lihat di website Anda. Bisa tolong berikan informasi lebih detail mengenai paket tersebut? Terima kasih.`;
+                }
+
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+                ctaButton.href = whatsappUrl;
+            }
+
+            serviceRadios.forEach(radio => {
+                radio.addEventListener('change', updateCtaLink);
+            });
+
+            updateCtaLink();
+        });
+    </script>
+</body>
+</html>
